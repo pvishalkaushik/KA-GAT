@@ -1,0 +1,17 @@
+LR: 0.0001
+NUM_EPOCHS: 400
+batch_size: 128
+encoder_atom: cgcnn
+encoder_bond: dim_14
+force_field: uff
+grid: 3
+head: 2
+iter: 3
+loss_sclect: bce
+model_select: pogat
+num_layers: 2
+pooling: avg
+select_dataset: tox21
+test_ratio: 0.1
+train_ratio: 0.8
+vali_ratio: 0.1
