@@ -73,6 +73,7 @@ def main():
     parser.add_argument("--smiles", required=True)
     parser.add_argument("--model_path", default=None)
     parser.add_argument("--config", default="./config/gat_path.yaml")
+    parser.add_argument("--cpu", action="store_true", help="Force CPU mode (ignore GPU)")
     args = parser.parse_args()
 
     task = args.task.lower()
@@ -89,7 +90,10 @@ def main():
     grid = cfg["grid"]
 
     # ---------------- Setup device ----------------
-    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+    if args.cpu:
+        device = torch.device("cpu")
+    else:
+        device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     print("Device:", device)
 
     # ---------------- Auto model path ----------------
